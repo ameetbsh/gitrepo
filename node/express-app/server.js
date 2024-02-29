@@ -18,7 +18,7 @@ const db = new sqlite3.Database("./app.db");
 
 //create table if not exists named Games that has columns Id, Name, Category, Year, Publisher
 db.run(
-  "CREATE TABLE IF NOT EXISTS Games (Id INTEGER PRIMARY KEY AUTOINCREMENT, Name TEXT, Category TEXT, Year INTEGER, Publisher TEXT)"
+  "CREATE TABLE IF NOT EXISTS Games (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, category TEXT, year INTEGER, publisher TEXT)"
 );
 
 // get all games from db
@@ -34,7 +34,7 @@ app.get("/games", (req, res) => {
 // add new game to db
 app.post("/games", (req, res) => {
   db.run(
-    "INSERT INTO Games (Name, Category, Year, Publisher) VALUES (?,?,?,?)",
+    "INSERT INTO Games (name, category, year, publisher) VALUES (?,?,?,?)",
     [req.body.name, req.body.category, req.body.year, req.body.publisher],
     (err) => {
       if (err) {
@@ -47,7 +47,7 @@ app.post("/games", (req, res) => {
 
 // delete game from db
 app.delete("/games/:id", (req, res) => {
-  db.run("DELETE FROM Games WHERE Id =?", [req.params.id], (err) => {
+  db.run("DELETE FROM Games WHERE id =?", [req.params.id], (err) => {
     if (err) {
       res.send(err);
     }
@@ -58,7 +58,7 @@ app.delete("/games/:id", (req, res) => {
 // update game in db
 app.put("/games/:id", (req, res) => {
   db.run(
-    "UPDATE Games SET Name =?, Category =?, Year =?, Publisher =? WHERE Id =?",
+    "UPDATE Games SET name =?, category =?, year =?, publisher =? WHERE id =?",
     [
       req.body.name,
       req.body.category,
@@ -77,7 +77,7 @@ app.put("/games/:id", (req, res) => {
 
 // get one game from db by id
 app.get("/games/:id", (req, res) => {
-  db.get("SELECT * FROM Games WHERE Id =?", [req.params.id], (err, row) => {
+  db.get("SELECT * FROM Games WHERE id =?", [req.params.id], (err, row) => {
     if (err) {
       res.send(err);
     }
