@@ -1,0 +1,37 @@
+form {
+  display: flex; /* Arrange elements horizontally */
+  flex-wrap: wrap; /* Allow wrapping to next line if needed */
+  margin: 1rem; /* Add some margin for spacing */
+}
+
+form input,
+form button {
+  padding: 0.5rem 1rem; /* Add padding for better user interaction */
+  margin: 0.5rem; /* Add margin between elements */
+  border: 1px solid #ccc; /* Add a light border */
+  border-radius: 4px; /* Add rounded corners */
+}
+
+form button {
+  background-color: #4caf50; /* Green color for the button */
+  color: white; /* White text color */
+  cursor: pointer; /* Indicate clickable behavior */
+}
+
+/* Styles for the table */
+table {
+  border-collapse: collapse; /* Remove default table border spacing */
+  width: 100%; /* Make the table fit the container width */
+}
+
+th,
+td {
+  padding: 0.5rem 1rem; /* Add padding for better readability */
+  text-align: left; /* Align text to the left */
+  border: 1px solid #ddd; /* Add a light border */
+}
+
+th {
+  background-color: #f2f2f2; /* Gray background for table headers */
+  font-weight: bold; /* Make headers bolder */
+}
