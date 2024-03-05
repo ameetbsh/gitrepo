@@ -85,6 +85,48 @@ app.get("/games/:id", (req, res) => {
   });
 });
 
+// get games by category
+app.get("/games/category/:category", (req, res) => {
+  db.all(
+    "SELECT * FROM Games WHERE category =?",
+    [req.params.category],
+    (err, rows) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(rows);
+    }
+  );
+});
+
+// get games by publisher
+app.get("/games/publisher/:publisher", (req, res) => {
+  db.all(
+    "SELECT * FROM Games WHERE publisher =?",
+    [req.params.publisher],
+    (err, rows) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(rows);
+    }
+  );
+});
+
+// get games by year
+app.get("/games/year/:year", (req, res) => {
+  db.all(
+    "SELECT * FROM Games WHERE year =?",
+    [req.params.year],
+    (err, rows) => {
+      if (err) {
+        res.send(err);
+      }
+      res.json(rows);
+    }
+  );
+});
+
 // listen on port 4000
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);

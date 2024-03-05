@@ -12,14 +12,14 @@ const Add = () => {
   });
   const [editing, setEditing] = useState(false);
 
+  const url = "http://localhost:4000/games";
+
   useEffect(() => {
     fetchGames();
   }, []);
 
   const fetchGames = async () => {
-    const response = await axios.get(
-      "https://fictional-potato-pgpjp6gjvg5cx9w-4000.app.github.dev/games"
-    );
+    const response = await axios.get(url);
     setGames(response.data);
     console.log(response.data);
   };
@@ -27,15 +27,9 @@ const Add = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (editing) {
-      await axios.put(
-        `https://fictional-potato-pgpjp6gjvg5cx9w-4000.app.github.dev/games/${game.id}`,
-        game
-      );
+      await axios.put(`url/${game.id}`, game);
     } else {
-      await axios.post(
-        "https://fictional-potato-pgpjp6gjvg5cx9w-4000.app.github.dev/games",
-        game
-      );
+      await axios.post(url, game);
     }
     setGame({ name: "", category: "", year: "", publisher: "" });
     setEditing(false);
@@ -43,9 +37,7 @@ const Add = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(
-      `https://fictional-potato-pgpjp6gjvg5cx9w-4000.app.github.dev/games/${id}`
-    );
+    await axios.delete(`url/${id}`);
     fetchGames();
   };
 
