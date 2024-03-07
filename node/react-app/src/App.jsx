@@ -23,11 +23,11 @@ const Add = () => {
     setGames(response.data);
     console.log(response.data);
   };
-
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (editing) {
-      await axios.put(`url/${game.id}`, game);
+      await axios.put(`${url}/${game.id}`, game);
     } else {
       await axios.post(url, game);
     }
@@ -37,7 +37,7 @@ const Add = () => {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`url/${id}`);
+    await axios.delete(`${url}/${id}`);
     fetchGames();
   };
 
