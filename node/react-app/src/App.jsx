@@ -12,7 +12,8 @@ const Add = () => {
   });
   const [editing, setEditing] = useState(false);
 
-  const url = "http://localhost:4000/games";
+  const url =
+    "https://fictional-potato-pgpjp6gjvg5cx9w-4000.app.github.dev/games";
 
   useEffect(() => {
     fetchGames();
